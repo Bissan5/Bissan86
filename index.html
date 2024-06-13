@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عد التنازلي لعيد الأضحى</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* لون الخلفية الأزرق السماوي */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #countdown {
+            font-size: 24px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        // تاريخ عيد الأضحى (يمكن تعديله)
+        const eidAlAdhaDate = new Date("2024-09-01T00:00:00");
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = eidAlAdhaDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `
+                <p>الأيام: ${days}</p>
+                <p>الساعات: ${hours}</p>
+                <p>الدقائق: ${minutes}</p>
+                <p>الثواني: ${seconds}</p>
+            `;
+        }
+
+        // تحديث العد التنازلي كل ثانية
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // لتحديث العد التنازلي عند تحميل الصفحة
+    </script>
+</body>
+</html>
